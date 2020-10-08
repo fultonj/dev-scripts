@@ -18,6 +18,8 @@ if [ -z "${METAL3_DEV_ENV}" ]; then
   # unset, to enable developer testing of local checkouts
   git reset 553e12f0f6c5f1af6761d7b4799e77b5df607572 --hard
   popd
+  sed -i s/sudo\ subscription-manager/echo\ #sudo\ subscription-manager/g /home/ocp/metal3-dev-env/centos_install_requirements.sh
+  echo 'OPENSHIFT_CI=true' >> /home/ocp/dev-scripts/config_ocp.sh
 fi
 
 pushd ${METAL3_DEV_ENV_PATH}
